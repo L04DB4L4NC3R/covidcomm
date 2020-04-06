@@ -1,14 +1,15 @@
-const express = require("express");
-const VoiceResponse = require("twilio").twiml.VoiceResponse;
+import express = require("express");
+// import VoiceResponse = require("twilio").twiml.VoiceResponse;
 const morgan = require("morgan");
 
-const app = express();
+const app : express.Application = express();
 app.use(morgan("combined"));
 
 app.get("/ping", (req, res, next) => {
-  return res.json({status: true}).status(200);
+  return res.send({message: "Live!"}).status(200);
 })
 
+  /*
 app.post("/voice", (req, res, next) => {
   const twiml = new VoiceResponse();
   twiml.say({ voice: "alice" }, "Hello, World!");
@@ -16,12 +17,13 @@ app.post("/voice", (req, res, next) => {
   response.type('"text/xml"');
   response.send(twiml.toString());
 });
+*/
 
-app.get("/*", (req, res, next) => {
-  return res.json({message: "Not Found"}).status(404);
+app.get("/*", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  return res.json({message: "Hello world"})
 })
 
-app.use((err, req, res, next) => {
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
   return res.json({message: "Error occurred", error_log: err}).status(500);
 })
 
