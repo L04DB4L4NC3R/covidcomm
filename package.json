@@ -1,0 +1,31 @@
+{
+  "name": "twilio-dev-hack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L04DB4L4NC3R/twilio-dev-hack.git"
+  },
+  "keywords": [
+    "twilio",
+    "DEV",
+    "COVID-19",
+    "coronavirus"
+  ],
+  "author": "Angad Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L04DB4L4NC3R/twilio-dev-hack/issues"
+  },
+  "homepage": "https://github.com/L04DB4L4NC3R/twilio-dev-hack#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "twilio": "^3.42.0"
+  }
+}
