@@ -1,5 +1,5 @@
 import { Repository } from "./repository";
-import { User, Requests } from "./entity";
+import { User, Requests, IUser } from "./entity";
 import mongoose, { Schema, Model } from "mongoose";
 
 
@@ -36,13 +36,17 @@ const UserSchema: Schema = new Schema({
         madeAt: {
           type: Date,
           default: new Date()
+        },
+        respondeeID: {
+          type: String,
+          default: null
         }
      }],
    default: []
  }
 })
 
-const UserModel = mongoose.model<User>('user', UserSchema);
+const UserModel = mongoose.model<IUser>('user', UserSchema);
 
 export class MongoRepo implements Repository {
   public FindByID(id: string) {
@@ -85,5 +89,33 @@ export class MongoRepo implements Repository {
     .skip(skip)
     .limit(limit)
     .exec()
+  }
+  public UpdateRespondee(id: string, respondee_id: string, req: string) {
+    return UserModel.findOneAndUpdate({_id: id, 
+      $elemMatch: {"requests.$._id": req}
+    }, {
+      $set: {
+        respondeeID: respondee_id
+      }
+    })
+  }
+  public ResetRespondee(id: string, request_id: string) {
+    return UserModel.findOneAndUpdate({_id: id, 
+      $elemMatch: {"requests.$._id": request_id}
+    }, {
+      $set: {
+        respondeeID: null
+      }
+    })
+  }
+
+  CreateUser(email: string, password: string, phoneNumber: string) {
+    let newUser: User = new User(
+      email,
+      password,
+      phoneNumber,
+      []
+    )
+    return UserModel.create(newUser)
   }
 }
