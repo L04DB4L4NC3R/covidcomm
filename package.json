@@ -27,8 +27,12 @@
   },
   "homepage": "https://github.com/L04DB4L4NC3R/twilio-dev-hack#readme",
   "dependencies": {
+    "@types/cron": "^1.7.2",
     "@types/express": "^4.17.4",
+    "@types/jsonwebtoken": "^8.3.9",
+    "cron": "^1.8.2",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "tsc-watch": "^4.2.3",

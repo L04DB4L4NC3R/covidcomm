@@ -4,7 +4,8 @@ import {
 
 // Got this file from here:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
-import { CronJob } from "./index";
+// or npm i cron @types/cron
+import { CronJob } from "cron";
 
 
 function InfoAPICronFunc(infoAPIUrl: string) {
