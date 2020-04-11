@@ -1,9 +1,10 @@
 import express from "express";
 // import VoiceResponse = require("twilio").twiml.VoiceResponse;
 const morgan = require("morgan");
+import config from "./config";
 
 const app : express.Application = express();
-app.use(morgan("combined"));
+app.use(morgan(config.LOGGING_FMT));
 
 app.get("/ping", (req, res, next) => {
   return res.send({message: "Live!"}).status(200);
@@ -27,7 +28,7 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   return res.json({message: "Error occurred", error_log: err}).status(500);
 })
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || config.PORT;
 app.listen(port, () => {
   console.info(
     `Serving on port ${port}`
