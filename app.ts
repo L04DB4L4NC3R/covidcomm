@@ -1,4 +1,4 @@
-import express = require("express");
+import express from "express";
 // import VoiceResponse = require("twilio").twiml.VoiceResponse;
 const morgan = require("morgan");
 
