@@ -4,9 +4,10 @@ import {
   Response,
   NextFunction
 } from "express";
+import { User } from "../model/entity"
 
 
-export class Users {
+export class UserHandler {
   public signup(req: Request, res: Response, next?: NextFunction) {
   }
   public login(req: Request, res: Response, next?: NextFunction) {
@@ -15,7 +16,7 @@ export class Users {
   }
 }
 
-const users = new Users();
+const users = new UserHandler();
 
 export const UsersRouter = Router();
 UsersRouter.post("/signup", users.signup);
