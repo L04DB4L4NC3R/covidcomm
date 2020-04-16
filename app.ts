@@ -55,6 +55,7 @@ mongoose.connect(config.DB_URI, {
   process.exit(1);
 })
 
+
 // not found handler
 app.get("/*", (req: express.Request, res: express.Response, next: express.NextFunction) => {
   return res.json({message: "Hello world"})

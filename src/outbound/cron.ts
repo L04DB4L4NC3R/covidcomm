@@ -6,15 +6,16 @@ import {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
 // or npm i cron @types/cron
 import { CronJob } from "cron";
+import config from "../../config";
 
-function InfoAPICronFunc(infoAPIUrl: string) {
+function InfoAPICronFunc() {
 
   return new Promise((resolve, reject) => {
-    let ob = new Outbound(infoAPIUrl);
+    let ob = new Outbound();
 
-    Promise.all([ob.fetchInfoAPI(), ob.fetchSubscribers])
-    .then(data => {
-      ob.sendMessage(data[0], data[1])
+    Promise.all([ob.fetchSubscribers(), ob.fetchInfoAPI()])
+    .then((data: any) => {
+      ob.callAll(data[0], data[1])
       .then((returnedData) => {
         resolve(returnedData);
       })
@@ -29,10 +30,30 @@ function InfoAPICronFunc(infoAPIUrl: string) {
   })
 }
 
-export function CronWrapper(infoAPIUrl: string, freq: string) {
+export function CronWrapper(freq: string) {
   new CronJob(freq, () => {
-    InfoAPICronFunc(infoAPIUrl)
+    InfoAPICronFunc()
     .then(console.log)
     .catch(console.error)
   });
+}
+
+// for testing
+export function Probe(): any {
+  return new Promise((resolve, reject) => {
+    let ob = new Outbound();
+    ob.fetchInfoAPI()
+    .then((response: any) => {
+      let str = "";
+      for(let news of response) {
+        str += ".  " + news.description;
+      }
+
+      // 4000 is max twiml size
+      let truncate = str.slice(0, 3900);
+      ob.callAll([config.TWILIO_VERIFIED_NUMBER], truncate)
+      .then(resolve)
+      .catch(reject)
+    }).catch(reject)
+   })
 }
