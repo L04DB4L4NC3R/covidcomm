@@ -5,6 +5,7 @@ import {
   NextFunction
 } from "express";
 import { UserAuthHandler, UserRequestsHandler } from "./handlers"
+import { checkJwt } from "../middleware/authorization";
 
 const usersAuth = new UserAuthHandler();
 const usersRequests = new UserRequestsHandler();
@@ -13,4 +14,4 @@ export const UsersRouter = Router();
 
 UsersRouter.post("/signup", usersAuth.signup);
 UsersRouter.post("/login", usersAuth.login);
-UsersRouter.post("/checkAuthentication", usersAuth.checkAuthentication);
+UsersRouter.get("/checkAuthentication", checkJwt, usersAuth.checkAuthentication);
