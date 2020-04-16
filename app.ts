@@ -16,6 +16,7 @@ import {
   UsersRouter
 } from "./src/registration/handlers/entrypoint";
 
+
 // initializing express server 
 const app : express.Application = express();
 
@@ -73,4 +74,9 @@ app.listen(port, () => {
   console.info(
     `Serving on port ${port}`
   );
+  /*
+  setInterval(() => {
+    // Function to be repeated HERE
+  }, 1000 * 2);
+  */
 });

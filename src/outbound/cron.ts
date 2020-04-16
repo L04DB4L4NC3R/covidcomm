@@ -5,17 +5,17 @@ import {
 // Got this file from here:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
 // or npm i cron @types/cron
-import { CronJob } from "cron";
 import config from "../../config";
 
+// TODO: to be repeated daily
 function InfoAPICronFunc() {
-
   return new Promise((resolve, reject) => {
     let ob = new Outbound();
 
     Promise.all([ob.fetchSubscribers(), ob.fetchInfoAPI()])
     .then((data: any) => {
-      ob.callAll(data[0], data[1])
+      // because max twiml size is 4000
+      ob.callAll(data[0].slice(0, 3900), data[1])
       .then((returnedData) => {
         resolve(returnedData);
       })
@@ -28,14 +28,6 @@ function InfoAPICronFunc() {
       reject(error);
     })
   })
-}
-
-export function CronWrapper(freq: string) {
-  new CronJob(freq, () => {
-    InfoAPICronFunc()
-    .then(console.log)
-    .catch(console.error)
-  });
 }
 
 // for testing
