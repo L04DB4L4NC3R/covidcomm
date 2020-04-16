@@ -1,8 +1,8 @@
 ![Alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--VZFUPPJe--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://res.cloudinary.com/practicaldev/image/fetch/s--55ibXz6X--/c_imagga_scale%2Cf_auto%2Cfl_progressive%2Ch_420%2Cq_auto%2Cw_1000/https://dev-to-uploads.s3.amazonaws.com/i/nifvpea2hzb5y7kethzt.png)
 
-<h2 align="center"> CovidComm </h2>
+## CovidComm
 
-A project for the Twilio DEV community Hackathon. The following is the track being followed in this project:
+A project for communication aid during the COVID-19 outbreak. Note that this project is made for the Twilio DEV community Hackathon. The following is the track being followed in this project:
 
 > COVID-19 Communications
 
