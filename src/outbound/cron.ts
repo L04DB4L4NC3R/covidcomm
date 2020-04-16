@@ -7,7 +7,6 @@ import {
 // or npm i cron @types/cron
 import { CronJob } from "cron";
 
-
 function InfoAPICronFunc(infoAPIUrl: string) {
 
   return new Promise((resolve, reject) => {

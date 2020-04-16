@@ -10,6 +10,7 @@ export interface Repository {
   RemoveRequest(id: string, request_id: string): any;
   SetFullfilled(id: string, request_id: string): any;
   ShowAllRequests(skip: number, limit: number): any;
+  ShowAllPhoneNumbers(skip: number, limit: number): any;
 
   UpdateRespondee(id: string, respondee_id: string, req: string): any;
   ResetRespondee(id: string, request_id: string): any;

@@ -108,6 +108,12 @@ export class MongoRepo implements Repository {
       }
     })
   }
+  public ShowAllPhoneNumbers(skip: number, limit: number) {
+    return UserModel.find({}, {_id: 0, phoneNumber: 1, password: 0})
+    .skip(skip)
+    .limit(limit)
+    .exec()
+  }
 
   CreateUser(email: string, password: string, phoneNumber: string) {
     let newUser: User = new User(

@@ -9,6 +9,7 @@ interface Service {
   RespondToRequest(id: string, other_user_id: string, req_id: string): any;
   MarkAsFulfilled(id: string, request_id: string): any;
   RejectResponse(id: string, request_id: string): any;
+  FetchPhoneNumbers(skip: number, limit: number): any;
 }
 
 
@@ -47,5 +48,8 @@ export class service implements Service {
   MarkAsFulfilled(id: string, request_id: string) {
   }
   RejectResponse(id: string, request_id: string) {
+  }
+  FetchPhoneNumbers(skip: number, limit: number): any {
+    return this.repo.ShowAllPhoneNumbers(skip, limit)
   }
 }
