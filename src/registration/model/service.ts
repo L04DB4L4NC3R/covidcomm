@@ -1,8 +1,8 @@
-import { hashSync } from "bcryptjs";
+import { hashSync, compareSync } from "bcryptjs";
 import config from "../../../config"
 import { MongoRepo } from "./mongodb"
 
-export interface Service {
+interface Service {
   Login(email: string, password: string): any;
   Signup(email: string, password: string, phoneNumber: string): any;
   MakeRequest(id: string, item: string, qty: number): any;
@@ -12,7 +12,7 @@ export interface Service {
 }
 
 
-class service implements Service {
+export class service implements Service {
 
   repo: MongoRepo;
   constructor(repo: MongoRepo) {
@@ -21,14 +21,15 @@ class service implements Service {
 
   Login(email: string, password: string) {
     return new Promise((resolve, reject) => {
-      let hashpass = hashSync(password, config.HASH_SALT);
       this.repo.FindByEmail(email)
       .then(user => {
         if (!user) {
-          return reject(new Error("User not found"));
+          reject(new Error("User not found"));
+          return
         }
-        if (user.password != hashpass) {
-          return reject(new Error("Passwords do not match"));
+        if (!compareSync(password, user.password)) {
+          reject(new Error("Passwords do not match"));
+          return
         }
         resolve(user);
       })

@@ -18,7 +18,9 @@ export default {
   INFO_API_URL: "https://google.com",
   CRON_DEFAULT_TIME: "* * * 1 * *",
   CRON_TESTING_TIME: "10 * * * * *",
-  HASH_SALT: "kwenf;wnqkcwqegkvnqwkfkwekfnwkefwbefjbwejfbwejff"
+  HASH_SALT: "kwenf;wnqkcwqegkvnqwkfkwekfnwkefwbefjbwejfbwejff",
+  DB_URI: "mongodb://<dbuser>:<dbpassword>@<hostname>:<port>/<database_name>",
+  API_VERSION: "/api/v1"
 };
 ```
 

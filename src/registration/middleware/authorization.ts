@@ -17,14 +17,16 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
     return;
   }
 
+};
+
+export const generateJWT = (id: string): string => {
+
   //The token is valid for 1 day
   //We want to send a new token on every request
-  const { userId, username } = jwtPayload;
-  const newToken = jwt.sign({ userId, username }, config.JWT_SECRET, {
+  const newToken = jwt.sign({ _id: id }, config.JWT_SECRET, {
     expiresIn: "1d"
   });
-  res.setHeader("token", newToken);
 
   //Call the next middleware or controller
-  next();
-};
+  return newToken
+}
