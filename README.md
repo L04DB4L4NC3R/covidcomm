@@ -1,4 +1,4 @@
-![Alt text](https://fontmeme.com/permalink/200418/dedae629b737f5d5f6d44250e7ce8ca2.png)
+![Alt text](https://fontmeme.com/permalink/200418/03eb6d29fa600fb86446393494a44f7a.png)
 
 ## CovidComm
 
