@@ -1,4 +1,4 @@
-![Alt text](https://res.cloudinary.com/practicaldev/image/fetch/s--VZFUPPJe--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://res.cloudinary.com/practicaldev/image/fetch/s--55ibXz6X--/c_imagga_scale%2Cf_auto%2Cfl_progressive%2Ch_420%2Cq_auto%2Cw_1000/https://dev-to-uploads.s3.amazonaws.com/i/nifvpea2hzb5y7kethzt.png)
+![Alt text](https://fontmeme.com/permalink/200418/dedae629b737f5d5f6d44250e7ce8ca2.png)
 
 ## CovidComm
 
