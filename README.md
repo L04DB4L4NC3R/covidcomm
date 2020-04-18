@@ -1,4 +1,6 @@
-![Alt text](https://fontmeme.com/permalink/200418/03eb6d29fa600fb86446393494a44f7a.png)
+<p align="center">
+<img src="https://fontmeme.com/permalink/200418/03eb6d29fa600fb86446393494a44f7a.png">
+</p>
 
 ## CovidComm
 
