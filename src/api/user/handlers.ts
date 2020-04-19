@@ -7,20 +7,14 @@ import {
   generateJWT
 } from "../middleware/authorization";
 
-import { User } from "../model/entity";
-import { service } from "../model/service";
-import { MongoRepo } from "../model/mongodb";
+import { IUserAuthHandler, IUserReqHandler } from "./contract";
+import { User } from "../../pkg/user/entity";
+import { service } from "../../pkg/user/service";
+import { MongoRepo } from "../../pkg/user/mongodb";
 
 let userRepo = new MongoRepo();
 let userSvc = new service(userRepo);
 
-interface IUserAuthHandler {
-  signup(req: Request, res: Response, next?: NextFunction): any;
-  login(req: Request, res: Response, next?: NextFunction): any;
-  checkAuthentication(req: Request, res: Response, next?: NextFunction): any;
-	subscribe(req: Request, res: Response, next?: NextFunction): any;
-	unsubscribe(req: Request, res: Response, next?: NextFunction): any;
-};
 
 export class UserAuthHandler implements IUserAuthHandler {
   // SignUp User
@@ -77,7 +71,7 @@ export class UserAuthHandler implements IUserAuthHandler {
 };
 
 
-export class UserRequestsHandler {
+export class UserRequestsHandler implements IUserReqHandler {
   public makeRequest(req: Request, res: Response, next?: NextFunction) {
   }
   public respondToRequest(req: Request, res: Response, next?: NextFunction) {

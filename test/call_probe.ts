@@ -1,4 +1,4 @@
-import { Probe } from "../src/outbound/cron";
+import { Probe } from "../src/pkg/outbound/cron";
 
 Probe()
 .then(console.log)

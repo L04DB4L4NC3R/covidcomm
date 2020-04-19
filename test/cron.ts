@@ -1,6 +1,6 @@
 import {
   Probe
-} from "../src/outbound/cron";
+} from "../src/pkg/outbound/cron";
 
 setInterval(() => {
   Probe()

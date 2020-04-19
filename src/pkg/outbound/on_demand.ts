@@ -4,7 +4,7 @@ import {
   NextFunction,
   Router
 } from "express";
-import { MongoRepo } from "../../registration/model/mongodb";
+import { MongoRepo } from "../user/mongodb";
 import config from "../../../config";
 import request from "request";
 const client = require('twilio')(config.TWILIO_ACCOUNT_SID, config.TWILIO_AUTH_TOKEN);

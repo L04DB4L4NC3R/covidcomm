@@ -14,7 +14,7 @@ import bp = require("body-parser");
 // handler imports
 import {
   UsersRouter
-} from "./src/registration/handlers/entrypoint";
+} from "./src/api/user/entrypoint";
 
 
 // initializing express server 

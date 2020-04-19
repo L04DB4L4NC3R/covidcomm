@@ -1,11 +1,11 @@
 import {
   Outbound
-} from "./handlers/on_demand";
+} from "./on_demand";
 
 // Got this file from here:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
 // or npm i cron @types/cron
-import config from "../../config";
+import config from "../../../config";
 
 // TODO: to be repeated daily
 function InfoAPICronFunc() {
