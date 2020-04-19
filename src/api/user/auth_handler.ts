@@ -59,7 +59,13 @@ export class UserAuthHandler implements IUserAuthHandler {
 	public subscribe(req: Request, res: Response, next?: NextFunction) {
 		userSvc.Subscription(req.params.jwtPayload, true)
 		.then(() => {
-			res.status(200).json(req.params.jwtPayload)
+			const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+			client.verify.services(process.env.TWILIO_SERVICE_SID)
+      .verifications
+      .create({to: '', channel: 'sms'})
+			.then((verification: any) => {
+			res.status(202).json({sid: verification.sid})
+			}).catch(next)
 		}).catch(next)
 	}
 	public unsubscribe(req: Request, res: Response, next?: NextFunction) {

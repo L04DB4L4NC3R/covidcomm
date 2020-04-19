@@ -12,24 +12,46 @@ A project for communication aid during the COVID-19 outbreak. Note that this pro
 
 #### Getting started
 
-* Create a file called `config.ts` with the following content. You can configure it according to your own desired settings.
+* Create a file called `.env` with the following content. You can configure it according to your own desired settings.
 
-```ts
-export default {
-  JWT_SECRET : "sajndaskdnsakdnaksndjs",
-  PORT: 3000,
-  LOGGING_FMT: "combined",
-  INFO_API_URL: "https://google.com",
-  CRON_DEFAULT_TIME: "* * * 1 * *",
-  CRON_TESTING_TIME: "10 * * * * *",
-  HASH_SALT: "kwenf;wnqkcwqegkvnqwkfkwekfnwkefwbefjbwejfbwejff",
-  DB_URI: "mongodb://<dbuser>:<dbpassword>@<hostname>:<port>/<database_name>",
-  API_VERSION: "/api/v1",
-  TWILIO_ACCOUNT_SID: "",
-  TWILIO_AUTH_TOKEN: "",
-  TWILIO_PHONE_NUMBER: "",
-  TWILIO_VERIFIED_NUMBER: ""
-};
+```bash
+# JSON Web Token
+JWT_SECRET="sajndaskdnsakdnaksndjs"
+
+# Morgan logging level
+LOGGING_FMT="combined"
+
+# The full API URL being used for fetching news
+INFO_API_URL= ""
+
+# Calling CRONJOB time
+CRON_DEFAULT_TIME="* * * 1 * *"
+
+# Calling CRONJOB time for testing
+CRON_TESTING_TIME="10 * * * * *"
+
+# SALT for hashing, should be an integer
+HASH_SALT=771
+
+# Database URI
+DB_URI="mongodb://<dbuser>:<dbpassword>@<hostname>:<port>/<database_name>"
+
+# Base URL
+API_VERSION= "/api/v1"
+
+# Account SID
+TWILIO_ACCOUNT_SID= ""
+
+# Auth token for programmable voice API
+TWILIO_AUTH_TOKEN= ""
+
+# Given phone number by twilio
+TWILIO_PHONE_NUMBER= ""
+
+# A verified phone number (for testing)
+TWILIO_VERIFIED_NUMBER= ""
+
+# Service SID for Verifying phone numbers on the flyTWILIO_SERVICE_SID=""
 ```
 
 * Run the following commands to get started:
