@@ -24,7 +24,11 @@ export default {
   CRON_TESTING_TIME: "10 * * * * *",
   HASH_SALT: "kwenf;wnqkcwqegkvnqwkfkwekfnwkefwbefjbwejfbwejff",
   DB_URI: "mongodb://<dbuser>:<dbpassword>@<hostname>:<port>/<database_name>",
-  API_VERSION: "/api/v1"
+  API_VERSION: "/api/v1",
+  TWILIO_ACCOUNT_SID: "",
+  TWILIO_AUTH_TOKEN: "",
+  TWILIO_PHONE_NUMBER: "",
+  TWILIO_VERIFIED_NUMBER: ""
 };
 ```
 
