@@ -15,3 +15,6 @@ export const UsersRouter = Router();
 UsersRouter.post("/signup", usersAuth.signup);
 UsersRouter.post("/login", usersAuth.login);
 UsersRouter.get("/checkAuthentication", checkJwt, usersAuth.checkAuthentication);
+
+UsersRouter.get("/subscribe", checkJwt, usersAuth.subscribe);
+UsersRouter.get("/unsubscribe", checkJwt, usersAuth.unsubscribe);

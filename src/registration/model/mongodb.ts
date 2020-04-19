@@ -18,6 +18,10 @@ const UserSchema: Schema = new Schema({
    required: true,
    unique: true
  },
+subscribed: {
+	type: String,
+	default: false
+},
  requests: {
    type: 
      [{
@@ -109,7 +113,7 @@ export class MongoRepo implements Repository {
     })
   }
   public ShowAllPhoneNumbers(skip: number, limit: number) {
-    return UserModel.find({}, {_id: 0, phoneNumber: 1, password: 0})
+    return UserModel.find({subscribed: true}, {_id: 0, phoneNumber: 1, password: 0})
     .skip(skip)
     .limit(limit)
     .exec()
@@ -120,8 +124,19 @@ export class MongoRepo implements Repository {
       email,
       password,
       phoneNumber,
-      []
+			[],
+			false
     )
     return UserModel.create(newUser)
   }
+	SetSubscribed(id: string) {
+		return UserModel.findOneAndUpdate({_id: id}, {
+			$set: {subscribed: true}
+		})
+	}
+	UnsetSubscribed(id: string) {
+		return UserModel.findOneAndUpdate({_id: id}, {
+			$set: {subscribed: false}
+		})
+	}
 }

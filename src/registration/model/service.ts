@@ -10,6 +10,7 @@ interface Service {
   MarkAsFulfilled(id: string, request_id: string): any;
   RejectResponse(id: string, request_id: string): any;
   FetchPhoneNumbers(skip: number, limit: number): any;
+	Subscription(id: string, set: boolean): any;
 }
 
 
@@ -41,6 +42,11 @@ export class service implements Service {
     let newpass = hashSync(password, config.HASH_SALT);
     return this.repo.CreateUser(email, newpass, phoneNumber)
   }
+	Subscription(id: string, set: boolean) {
+		if (set)
+			return this.repo.SetSubscribed(id);
+		return this.repo.UnsetSubscribed(id);
+	}
   MakeRequest(id: string, item: string, qty: number) {
   }
   RespondToRequest(id: string, other_user_id: string, req_id: string) {

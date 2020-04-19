@@ -11,6 +11,8 @@ export interface Repository {
   SetFullfilled(id: string, request_id: string): any;
   ShowAllRequests(skip: number, limit: number): any;
   ShowAllPhoneNumbers(skip: number, limit: number): any;
+	SetSubscribed(id: string): any;
+	UnsetSubscribed(id: string): any;
 
   UpdateRespondee(id: string, respondee_id: string, req: string): any;
   ResetRespondee(id: string, request_id: string): any;
