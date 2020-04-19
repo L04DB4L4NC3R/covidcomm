@@ -129,9 +129,15 @@ export class MongoRepo implements Repository {
     )
     return UserModel.create(newUser)
   }
-	SetSubscribed(id: string) {
-		return UserModel.findOneAndUpdate({_id: id}, {
-			$set: {subscribed: true}
+	SetSubscribed(id: string): any {
+		return new Promise((resolve, reject) => {
+			UserModel.findOneAndUpdate({_id: id}, {
+				$set: {subscribed: true}
+				}).then((user: any) => {
+					UserModel.findById(id, {_id: 0, password: 0})
+					.then(resolve)
+					.catch(reject)
+				}).catch(reject)
 		})
 	}
 	UnsetSubscribed(id: string) {

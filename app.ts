@@ -49,7 +49,9 @@ app.post("/voice", (req, res, next) => {
 // mongoDB connection promise
 mongoose.connect(<string>process.env.DB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+	useCreateIndex: true
 }).then(() => {
   console.log("Connected to MongoDB")
 }).catch((err: any) => {
