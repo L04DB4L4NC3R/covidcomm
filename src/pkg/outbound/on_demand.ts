@@ -5,9 +5,8 @@ import {
   Router
 } from "express";
 import { MongoRepo } from "../user/mongodb";
-import config from "../../../config";
 import request from "request";
-const client = require('twilio')(config.TWILIO_ACCOUNT_SID, config.TWILIO_AUTH_TOKEN);
+const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 let userRepo = new MongoRepo();
 
@@ -18,7 +17,7 @@ export class Outbound {
   }
   public fetchInfoAPI() {
     return new Promise((resolve, reject) => {
-      request(config.INFO_API_URL, (err, response, body) => {
+      request(<string>process.env.INFO_API_URL, (err, response, body) => {
         if (err) 
           reject(err)
         else 
@@ -37,7 +36,7 @@ export class Outbound {
     let payload = {
       twiml: `<?xml version="1.0" encoding="UTF-8"?><Response><Say>${message}</Say></Response>`,
       to: "",
-      from: config.TWILIO_PHONE_NUMBER
+      from: process.env.TWILIO_PHONE_NUMBER
     }
     let pmArray = [];
     for(let num of phoneNumbers) {

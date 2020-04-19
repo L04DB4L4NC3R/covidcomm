@@ -1,5 +1,4 @@
 import { hashSync, compareSync } from "bcryptjs";
-import config from "../../../config"
 import { MongoRepo } from "./mongodb"
 
 interface Service {
@@ -39,7 +38,7 @@ export class service implements Service {
   }
   Signup(email: string, password: string, phoneNumber: string) {
     // TODO: verify phone number
-    let newpass = hashSync(password, config.HASH_SALT);
+    let newpass = hashSync(password, parseInt(<string>process.env.HASH_SALT));
     return this.repo.CreateUser(email, newpass, phoneNumber)
   }
 	Subscription(id: string, set: boolean) {

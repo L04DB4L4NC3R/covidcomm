@@ -2,9 +2,6 @@
 import express from "express";
 // import VoiceResponse = require("twilio").twiml.VoiceResponse;
 
-// your settings
-import config from "./config";
-
 // database
 import mongoose from "mongoose";
 
@@ -16,13 +13,17 @@ import {
   UsersRouter
 } from "./src/api/user/entrypoint";
 
+// dotenv
+const dotenv = require("dotenv");
+dotenv.config();
+
 
 // initializing express server 
 const app : express.Application = express();
 
 // request logging layer
 const morgan = require("morgan");
-app.use(morgan(config.LOGGING_FMT));
+app.use(morgan(process.env.LOGGING_FMT));
 
 // handling json request payload
 app.use(bp.json());
@@ -33,7 +34,7 @@ app.get("/ping", (req, res, next) => {
 })
 
 // application endpoint handlers
-app.use(`${config.API_VERSION}/user`, UsersRouter);
+app.use(`${process.env.API_VERSION}/user`, UsersRouter);
 
   /*
 app.post("/voice", (req, res, next) => {
@@ -46,7 +47,7 @@ app.post("/voice", (req, res, next) => {
 */
 
 // mongoDB connection promise
-mongoose.connect(config.DB_URI, {
+mongoose.connect(<string>process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -69,7 +70,7 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
 })
 
 // server hosting section
-let port = process.env.PORT || config.PORT;
+let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.info(
     `Serving on port ${port}`

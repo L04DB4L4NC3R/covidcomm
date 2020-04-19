@@ -5,8 +5,6 @@ import {
 // Got this file from here:
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
 // or npm i cron @types/cron
-import config from "../../../config";
-
 // TODO: to be repeated daily
 function InfoAPICronFunc() {
   return new Promise((resolve, reject) => {
@@ -43,7 +41,7 @@ export function Probe(): any {
 
       // 4000 is max twiml size
       let truncate = str.slice(0, 3900);
-      ob.callAll([config.TWILIO_VERIFIED_NUMBER], truncate)
+      ob.callAll([process.env.TWILIO_VERIFIED_NUMBER], truncate)
       .then(resolve)
       .catch(reject)
     }).catch(reject)
