@@ -12,10 +12,9 @@ export interface IUserAuthHandler {
 	unsubscribe(req: Request, res: Response, next?: NextFunction): any;
 };
 
-
 export interface IUserReqHandler {
   makeRequest(req: Request, res: Response, next?: NextFunction): any;
   respondToRequest(req: Request, res: Response, next?: NextFunction): any;
   markAsFulfilled(req: Request, res: Response, next?: NextFunction): any;
-rejectResponse(req: Request, res: Response, next?: NextFunction): any;
+  rejectResponse(req: Request, res: Response, next?: NextFunction): any;
 }

@@ -1,10 +1,7 @@
-import {
-  Router,
-  Request,
-  Response,
-  NextFunction
-} from "express";
-import { UserAuthHandler, UserRequestsHandler } from "./handlers"
+import { Router } from "express";
+import { UserAuthHandler } from "./auth_handler"
+import { UserRequestsHandler } from "./request_handler"
+
 import { checkJwt } from "../middleware/authorization";
 
 const usersAuth = new UserAuthHandler();

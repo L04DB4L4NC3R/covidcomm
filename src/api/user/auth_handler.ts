@@ -3,12 +3,12 @@ import {
   Response,
   NextFunction
 } from "express";
+
 import {
   generateJWT
 } from "../middleware/authorization";
 
-import { IUserAuthHandler, IUserReqHandler } from "./contract";
-import { User } from "../../pkg/user/entity";
+import { IUserAuthHandler } from "./contract";
 import { service } from "../../pkg/user/service";
 import { MongoRepo } from "../../pkg/user/mongodb";
 
@@ -68,16 +68,4 @@ export class UserAuthHandler implements IUserAuthHandler {
 			res.status(200).json(req.params.jwtPayload)
 		}).catch(next)
 	}
-};
-
-
-export class UserRequestsHandler implements IUserReqHandler {
-  public makeRequest(req: Request, res: Response, next?: NextFunction) {
-  }
-  public respondToRequest(req: Request, res: Response, next?: NextFunction) {
-  }
-  public markAsFulfilled(req: Request, res: Response, next?: NextFunction) {
-  }
-  public rejectResponse(req: Request, res: Response, next?: NextFunction) {
-  }
 };

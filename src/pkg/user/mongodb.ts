@@ -1,6 +1,6 @@
 import { Repository } from "./repository";
 import { User, Requests, IUser } from "./entity";
-import mongoose, { Schema, Model } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 
 const UserSchema: Schema = new Schema({
