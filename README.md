@@ -51,7 +51,8 @@ TWILIO_PHONE_NUMBER= ""
 # A verified phone number (for testing)
 TWILIO_VERIFIED_NUMBER= ""
 
-# Service SID for Verifying phone numbers on the flyTWILIO_SERVICE_SID=""
+# Service SID for Verifying phone numbers on the fly
+TWILIO_SERVICE_SID=""
 ```
 
 * Run the following commands to get started:
