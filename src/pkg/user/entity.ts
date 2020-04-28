@@ -24,6 +24,16 @@ export class RequestsStruct {
 		}
 }
 
+export class Coordinates {
+  latitude: number;
+  longitude: number;
+	
+		constructor(latitude: number, longitude: number) {
+				this.latitude = latitude;
+				this.longitude = longitude;
+		}
+}
+
 export interface IUser extends Document {
   email: string;
   password: string;
@@ -38,11 +48,13 @@ export class User {
   phoneNumber: string;
 	subscribed: Boolean;
   requests: Requests[];
+  coordinates: Coordinates;
 
-  constructor(email: string, password: string, phoneNumber: string, request: Request[], subscribed: boolean) {
+  constructor(email: string, password: string, phoneNumber: string, request: Request[], subscribed: boolean, coordinates: Coordinates) {
     this.email = email;
     this.password = password;
     this.phoneNumber = phoneNumber;
+    this.coordinates = coordinates;
     this.requests = [];
 		this.subscribed = false;
   }

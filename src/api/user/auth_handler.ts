@@ -21,9 +21,9 @@ export class UserAuthHandler implements IUserAuthHandler {
   public signup(req: Request, res: Response, next?: NextFunction) {
     // TODO: input sanitization
     let {
-      email, password, phone_number
+      email, password, phone_number, latitude, longitude
     } = req.body;
-    userSvc.Signup(email, password, phone_number)
+    userSvc.Signup(email, password, phone_number, latitude, longitude)
     .then(user => {
       let jwt = generateJWT(user._id);
       return res.status(201).json({
