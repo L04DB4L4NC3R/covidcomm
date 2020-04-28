@@ -65,7 +65,7 @@ export class MongoRepo implements Repository {
     .limit(limit)
     .exec()
   }
-  public AppendRequest(id: string, request: Requests) {
+  public AppendRequest(id: string, request: any) {
     return UserModel.findOneAndUpdate({_id: id}, {
       $push: {
         requests: request

@@ -1,5 +1,6 @@
 import { hashSync, compareSync } from "bcryptjs";
 import { MongoRepo } from "./mongodb"
+import { RequestsStruct } from "./entity"
 
 interface Service {
   Login(email: string, password: string): any;
@@ -47,12 +48,21 @@ export class service implements Service {
 		return this.repo.UnsetSubscribed(id);
 	}
   MakeRequest(id: string, item: string, qty: number) {
+			let request = new RequestsStruct(
+					item,
+					qty
+			);
+			return this.repo.AppendRequest(id, request);
   }
   RespondToRequest(id: string, other_user_id: string, req_id: string) {
+			return this.repo.UpdateRespondee(id, other_user_id, req_id);
   }
+
   MarkAsFulfilled(id: string, request_id: string) {
+			return this.repo.SetFullfilled(id, request_id);
   }
   RejectResponse(id: string, request_id: string) {
+			return this.repo.ResetRespondee(id, request_id);
   }
   FetchPhoneNumbers(skip: number, limit: number): any {
     return this.repo.ShowAllPhoneNumbers(skip, limit)

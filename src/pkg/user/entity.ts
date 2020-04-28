@@ -8,6 +8,22 @@ export interface Requests extends Document {
   madeAt: Date;
 }
 
+export class RequestsStruct {
+  item: string;
+  qty: number;
+  fulfilled: boolean;
+  respondeeID: string;
+  madeAt: Date;
+	
+		constructor(item: string, qty: number) {
+				this.item = item;
+				this.qty = qty;
+				this.fulfilled = false;
+				this.respondeeID = "";
+				this.madeAt = new Date();
+		}
+}
+
 export interface IUser extends Document {
   email: string;
   password: string;

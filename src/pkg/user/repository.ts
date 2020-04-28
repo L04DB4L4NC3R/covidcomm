@@ -6,7 +6,7 @@ export interface Repository {
   FindByEmail(email: string): any;
   ShowAllUsers(skip: number, limit: number): any;
 
-  AppendRequest(id: string, request: Requests): any;
+  AppendRequest(id: string, request: any): any;
   RemoveRequest(id: string, request_id: string): any;
   SetFullfilled(id: string, request_id: string): any;
   ShowAllRequests(skip: number, limit: number): any;
