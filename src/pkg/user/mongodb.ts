@@ -1,5 +1,5 @@
 import { Repository } from "./repository";
-import { User, Requests, IUser } from "./entity";
+import { User, IUser, Coordinates } from "./entity";
 import mongoose, { Schema } from "mongoose";
 
 
@@ -119,13 +119,14 @@ export class MongoRepo implements Repository {
     .exec()
   }
 
-  CreateUser(email: string, password: string, phoneNumber: string) {
+  CreateUser(email: string, password: string, phoneNumber: string, coordinates: Coordinates) {
     let newUser: User = new User(
       email,
       password,
       phoneNumber,
 			[],
-			false
+      false,
+      coordinates,
     )
     return UserModel.create(newUser)
   }

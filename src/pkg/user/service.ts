@@ -1,10 +1,10 @@
 import { hashSync, compareSync } from "bcryptjs";
 import { MongoRepo } from "./mongodb"
-import { RequestsStruct } from "./entity"
+import { RequestsStruct, Coordinates } from "./entity"
 
 interface Service {
   Login(email: string, password: string): any;
-  Signup(email: string, password: string, phoneNumber: string): any;
+  Signup(email: string, password: string, phoneNumber: string, latitude: number, longitude: number): any;
   MakeRequest(id: string, item: string, qty: number): any;
   RespondToRequest(id: string, other_user_id: string, req_id: string): any;
   MarkAsFulfilled(id: string, request_id: string): any;
@@ -37,10 +37,12 @@ export class service implements Service {
       })
     })
   }
-  Signup(email: string, password: string, phoneNumber: string) {
+  Signup(email: string, password: string, phoneNumber: string, latitude: number, longitude: number) {
     // TODO: verify phone number
     let newpass = hashSync(password, parseInt(<string>process.env.HASH_SALT));
-    return this.repo.CreateUser(email, newpass, phoneNumber)
+    let coordinates = new Coordinates(latitude, longitude);
+
+    return this.repo.CreateUser(email, newpass, phoneNumber, coordinates)
   }
 	Subscription(id: string, set: boolean) {
 		if (set)

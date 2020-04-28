@@ -1,7 +1,7 @@
-import { Requests } from "./entity";
+import { Coordinates } from "./entity";
 
 export interface Repository {
-  CreateUser(email: string, password: string, phoneNumber: string): any;
+  CreateUser(email: string, password: string, phoneNumber: string, coordinates: Coordinates): any;
   FindByID(id: string): any;
   FindByEmail(email: string): any;
   ShowAllUsers(skip: number, limit: number): any;
