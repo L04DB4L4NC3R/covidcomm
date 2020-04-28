@@ -55,5 +55,11 @@ import {
 							return res.status(200).json(r);
 						}).catch(next);
     }
+    public viewRequests(req: Request, res: Response, next?: NextFunction) {
+			userSvc.ViewRequests(req.params.jwtPayload)
+				.then((user: any) => {
+					return res.status(200).json(user);
+				}).catch(next);
+		}			
   };
   

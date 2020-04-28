@@ -21,3 +21,4 @@ UsersRouter.post("/request", checkJwt, usersRequests.makeRequest);
 UsersRouter.post("/respond", checkJwt, usersRequests.respondToRequest);
 UsersRouter.post("/fulfilled", checkJwt, usersRequests.markAsFulfilled);
 UsersRouter.post("/reject", checkJwt, usersRequests.rejectResponse);
+UsersRouter.get("/viewrequests", checkJwt, usersRequests.viewRequests);

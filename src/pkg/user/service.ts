@@ -11,6 +11,7 @@ interface Service {
   RejectResponse(id: string, request_id: string): any;
   FetchPhoneNumbers(skip: number, limit: number): any;
 	Subscription(id: string, set: boolean): any;
+	ViewRequests(id: string): any;
 }
 
 
@@ -69,4 +70,12 @@ export class service implements Service {
   FetchPhoneNumbers(skip: number, limit: number): any {
     return this.repo.ShowAllPhoneNumbers(skip, limit)
   }
+	ViewRequests(id: string): any {
+			return new Promise((resolve, reject) => {
+				this.repo.FindByID(id)
+				.then((user: any) => {
+					return resolve(user.requests);
+				}).catch(reject);
+		})
+	}
 }
