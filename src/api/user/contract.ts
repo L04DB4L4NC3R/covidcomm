@@ -18,4 +18,5 @@ export interface IUserReqHandler {
   markAsFulfilled(req: Request, res: Response, next?: NextFunction): any;
   rejectResponse(req: Request, res: Response, next?: NextFunction): any;
   viewRequests(req: Request, res: Response, next?: NextFunction): any;
+  viewAllRequests(req: Request, res: Response, next?: NextFunction): any;
 }

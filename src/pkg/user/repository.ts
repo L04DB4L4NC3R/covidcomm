@@ -16,4 +16,5 @@ export interface Repository {
 
   UpdateRespondee(id: string, respondee_id: string, req: string): any;
   ResetRespondee(id: string, request_id: string): any;
+	FindAllRequestsWithoutID(id: string): any;
 }

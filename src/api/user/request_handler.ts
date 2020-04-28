@@ -61,5 +61,11 @@ import {
 					return res.status(200).json(user);
 				}).catch(next);
 		}			
+    public viewAllRequests(req: Request, res: Response, next?: NextFunction) {
+			userSvc.ViewAllRequests(req.params.jwtPayload)
+				.then((user: any) => {
+					return res.status(200).json(user);
+				}).catch(next);
+		}			
   };
   
