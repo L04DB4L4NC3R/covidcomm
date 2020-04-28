@@ -22,6 +22,13 @@ subscribed: {
 	type: String,
 	default: false
 },
+coordinates: {
+		type: {
+				latitude: Number,
+				longitude: Number
+		},
+		required: true
+},
  requests: {
    type: 
      [{
@@ -81,10 +88,10 @@ export class MongoRepo implements Repository {
   }
   public SetFullfilled(id: string, request_id: string) {
     return UserModel.findOneAndUpdate({_id: id, 
-      $elemMatch: {"request.$._id" :request_id}
+				"requests" : {$elemMatch: {_id: request_id}}
     }, {
       $set: {
-        "fulfilled": true
+        "requests.$.fulfilled": true
       }
     })
   }
@@ -96,19 +103,20 @@ export class MongoRepo implements Repository {
   }
   public UpdateRespondee(id: string, respondee_id: string, req: string) {
     return UserModel.findOneAndUpdate({_id: id, 
-      $elemMatch: {"requests.$._id": req}
+				"requests": {$elemMatch: {_id: req}}
     }, {
       $set: {
-        respondeeID: respondee_id
+        "requests.$.respondeeID": respondee_id
       }
     })
   }
   public ResetRespondee(id: string, request_id: string) {
     return UserModel.findOneAndUpdate({_id: id, 
-      $elemMatch: {"requests.$._id": request_id}
+				"requests": {$elemMatch: {_id: request_id}}
     }, {
       $set: {
-        respondeeID: null
+        "requests.$.respondeeID": null,
+        "requests.$.fulfilled": false,
       }
     })
   }

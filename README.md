@@ -8,7 +8,7 @@ A project for communication aid during the COVID-19 outbreak. Note that this pro
 
 > COVID-19 Communications
 
-[![Alt text](https://img.shields.io/badge/docs-view%20documentation-yellowgreen)](https://documenter.getpostman.com/view/3896915/Szf3aW6y)
+[![Alt text](https://img.shields.io/badge/docs-view%20documentation-yellowgreen)](https://documenter.getpostman.com/view/3896915/SzfDx5Hi)
 
 #### Getting started
 

@@ -15,3 +15,9 @@ UsersRouter.get("/checkAuthentication", checkJwt, usersAuth.checkAuthentication)
 
 UsersRouter.put("/subscribe", checkJwt, usersAuth.subscribe);
 UsersRouter.put("/unsubscribe", checkJwt, usersAuth.unsubscribe);
+
+// Request handlers
+UsersRouter.post("/request", checkJwt, usersRequests.makeRequest);
+UsersRouter.post("/respond", checkJwt, usersRequests.respondToRequest);
+UsersRouter.post("/fulfilled", checkJwt, usersRequests.markAsFulfilled);
+UsersRouter.post("/reject", checkJwt, usersRequests.rejectResponse);
