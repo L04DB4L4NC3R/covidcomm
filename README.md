@@ -8,7 +8,7 @@ A project for communication aid during the COVID-19 outbreak. Note that this pro
 
 > COVID-19 Communications
 
-Head over to the [official user interface repository](https://github.com/L04DB4L4NC3R/covidcomm-ui/blob/master/README.md) for CovidComm to look at it's features, demo, and installation.
+Head over to the [official user interface repository](https://github.com/L04DB4L4NC3R/covidcomm-ui/blob/master/README.md) for CovidComm to look at it's features, demo, and installation. Head over to DEV to see the [submission blog for this project](https://dev.to/l04db4l4nc3r/twilio-dev-hackathon-project-2c9o). 
 
 [![Alt text](https://img.shields.io/badge/docs-view%20documentation-yellowgreen)](https://documenter.getpostman.com/view/3896915/SzfDx5Hi)
 
