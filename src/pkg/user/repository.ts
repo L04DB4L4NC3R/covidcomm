@@ -14,7 +14,7 @@ export interface Repository {
 	SetSubscribed(id: string): any;
 	UnsetSubscribed(id: string): any;
 
-  UpdateRespondee(id: string, respondee_id: string, req: string): any;
+  UpdateRespondee(id: string, req: string): any;
   ResetRespondee(id: string, request_id: string): any;
 	FindAllRequestsWithoutID(id: string): any;
 }

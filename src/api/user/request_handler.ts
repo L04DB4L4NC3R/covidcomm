@@ -26,11 +26,10 @@ import {
     }
     public respondToRequest(req: Request, res: Response, next?: NextFunction) {
 				let {
-						respondee_id,
 						request_id
 				} = req.body;
 
-				userSvc.RespondToRequest(req.params.jwtPayload, respondee_id, request_id)
+				userSvc.RespondToRequest(req.params.jwtPayload, request_id)
 						.then((r: any) => {
 							return res.status(200).json(r);
 						}).catch(next)

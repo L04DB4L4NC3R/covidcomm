@@ -6,7 +6,7 @@ interface Service {
   Login(email: string, password: string): any;
   Signup(email: string, password: string, phoneNumber: string, latitude: number, longitude: number): any;
   MakeRequest(id: string, item: string, qty: number): any;
-  RespondToRequest(id: string, other_user_id: string, req_id: string): any;
+  RespondToRequest(id: string, req_id: string): any;
   MarkAsFulfilled(id: string, request_id: string): any;
   RejectResponse(id: string, request_id: string): any;
   FetchPhoneNumbers(skip: number, limit: number): any;
@@ -58,8 +58,8 @@ export class service implements Service {
 			);
 			return this.repo.AppendRequest(id, request);
   }
-  RespondToRequest(id: string, other_user_id: string, req_id: string) {
-			return this.repo.UpdateRespondee(id, other_user_id, req_id);
+  RespondToRequest(id: string, req_id: string) {
+			return this.repo.UpdateRespondee(id, req_id);
   }
 
   MarkAsFulfilled(id: string, request_id: string) {

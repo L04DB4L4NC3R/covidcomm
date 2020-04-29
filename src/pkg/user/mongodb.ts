@@ -101,12 +101,12 @@ export class MongoRepo implements Repository {
     .limit(limit)
     .exec()
   }
-  public UpdateRespondee(id: string, respondee_id: string, req: string) {
-    return UserModel.findOneAndUpdate({_id: id, 
+  public UpdateRespondee(id: string, req: string) {
+    return UserModel.findOneAndUpdate({
 				"requests": {$elemMatch: {_id: req}}
     }, {
       $set: {
-        "requests.$.respondeeID": respondee_id
+        "requests.$.respondeeID": id
       }
     })
   }
