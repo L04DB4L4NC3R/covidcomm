@@ -70,7 +70,7 @@ import {
 				let {respondee_id} = req.body;
 			userSvc.FindUser(respondee_id)
 				.then((user: any) => {
-					return res.status(200).json(user);
+						return res.status(200).json({email: user.email, phoneNumber: user.phoneNumber});
 				}).catch(next);
 		}			
   };
