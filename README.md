@@ -8,6 +8,8 @@ A project for communication aid during the COVID-19 outbreak. Note that this pro
 
 > COVID-19 Communications
 
+Head over to the [official user interface repository](https://github.com/L04DB4L4NC3R/covidcomm-ui) for CovidComm to look at it's features, demo, and installation.
+
 [![Alt text](https://img.shields.io/badge/docs-view%20documentation-yellowgreen)](https://documenter.getpostman.com/view/3896915/SzfDx5Hi)
 
 #### Getting started
