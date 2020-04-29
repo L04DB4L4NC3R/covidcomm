@@ -96,7 +96,7 @@ export class MongoRepo implements Repository {
     })
   }
   public ShowAllRequests(skip: number, limit: number) {
-    return UserModel.find({}, {_id: 0, requests: 1, password: 0})
+    return UserModel.find({}, {_id: 0, requests: 1})
     .skip(skip)
     .limit(limit)
     .exec()
@@ -122,7 +122,7 @@ export class MongoRepo implements Repository {
     })
   }
   public ShowAllPhoneNumbers(skip: number, limit: number) {
-    return UserModel.find({subscribed: true}, {_id: 0, phoneNumber: 1, password: 0})
+    return UserModel.find({subscribed: true}, {_id: 0, phoneNumber: 1})
     .skip(skip)
     .limit(limit)
     .exec()

@@ -6,28 +6,23 @@ import {
 // https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/cron
 // or npm i cron @types/cron
 // TODO: to be repeated daily
-function InfoAPICronFunc() {
-  return new Promise((resolve, reject) => {
+export function InfoAPICronFunc(nums: string[]): any {
+		return new Promise((resolve, reject) => {
     let ob = new Outbound();
-
-    Promise.all([ob.fetchSubscribers(), ob.fetchInfoAPI()])
-    .then((data: any) => {
-      // because max twiml size is 4000
-      ob.callAll(data[0].slice(0, 3900), data[1])
-      .then((returnedData) => {
-        resolve(returnedData);
-      })
-      .catch(error => {
-        console.error(error);
-        reject(error);
-      })
-    }).catch(error => {
-      console.error(error);
-      reject(error);
-    })
-  })
+    ob.fetchInfoAPI()
+    .then((response: any) => {
+      let str = "";
+      for(let news of response) {
+        str += ".  " + news.description;
+      }
+      // 4000 is max twiml size
+      let truncate = str.slice(0, 3900);
+      		ob.callAll(nums, truncate)
+      		.then(resolve)
+      		.catch(reject)
+    	}).catch(reject)
+		})
 }
-
 // for testing
 export function Probe(): any {
   return new Promise((resolve, reject) => {

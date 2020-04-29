@@ -1,6 +1,5 @@
 // express server
 import express from "express";
-// import VoiceResponse = require("twilio").twiml.VoiceResponse;
 
 // database
 import mongoose from "mongoose";
@@ -17,6 +16,10 @@ import {
 const dotenv = require("dotenv");
 dotenv.config();
 
+// Func to call people daily
+import { InfoAPICronFunc } from "./src/pkg/outbound/cron";
+
+import { MongoRepo } from "./src/pkg/user/mongodb";
 
 // initializing express server 
 const app : express.Application = express();
@@ -35,16 +38,6 @@ app.get("/ping", (req, res, next) => {
 
 // application endpoint handlers
 app.use(`${process.env.API_VERSION}/user`, UsersRouter);
-
-  /*
-app.post("/voice", (req, res, next) => {
-  const twiml = new VoiceResponse();
-  twiml.say({ voice: "alice" }, "Hello, World!");
-
-  response.type('"text/xml"');
-  response.send(twiml.toString());
-});
-*/
 
 // mongoDB connection promise
 mongoose.connect(<string>process.env.DB_URI, {
@@ -77,9 +70,20 @@ app.listen(port, () => {
   console.info(
     `Serving on port ${port}`
   );
-  /*
-  setInterval(() => {
-    // Function to be repeated HERE
-  }, 1000 * 2);
-  */
+  
+	let userRepo = new MongoRepo();
+  setInterval(async () => {
+			console.log("Calling subscribers");
+			userRepo.ShowAllPhoneNumbers(0, 0)
+					.then(nums => {
+							let numArray = [];
+							for(let n of nums) {
+									numArray.push(n.phoneNumber)
+							}
+							InfoAPICronFunc(numArray)
+									.then(console.log)
+							.catch(console.error)
+					})
+			.catch(console.error)
+  }, 1000 * 60 * 60 * 24);
 });
