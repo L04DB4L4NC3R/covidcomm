@@ -86,7 +86,7 @@ export class service implements Service {
 					let reqArray: any = [];
 					for(let u of user) 
 					  reqArray.push(...u.requests)
-						return resolve({requests: reqArray});
+						return resolve(reqArray);
 				}).catch(reject);
 		})
 	}
