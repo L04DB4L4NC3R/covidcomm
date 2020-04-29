@@ -106,7 +106,8 @@ export class MongoRepo implements Repository {
 				"requests": {$elemMatch: {_id: req}}
     }, {
       $set: {
-        "requests.$.respondeeID": id
+					"requests.$.respondeeID": id,
+					fulfilled: true
       }
     })
   }
@@ -155,6 +156,6 @@ export class MongoRepo implements Repository {
 		})
 	}
 	FindAllRequestsWithoutID(id: string) {
-			return UserModel.find({_id: {$ne: id}}, {_id: 0, requests: 1})
+			return UserModel.find({_id: {$ne: id}, fulfilled: false}, {_id: 0, requests: 1})
 	}
 }
