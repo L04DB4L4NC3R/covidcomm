@@ -15,6 +15,7 @@ UsersRouter.get("/checkAuthentication", checkJwt, usersAuth.checkAuthentication)
 
 UsersRouter.put("/subscribe", checkJwt, usersAuth.subscribe);
 UsersRouter.put("/unsubscribe", checkJwt, usersAuth.unsubscribe);
+UsersRouter.post("/verifyotp", checkJwt, usersAuth.verifyOTP);
 
 // Request handlers
 UsersRouter.post("/request", checkJwt, usersRequests.makeRequest);
