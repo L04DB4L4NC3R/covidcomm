@@ -19,4 +19,5 @@ export interface IUserReqHandler {
   rejectResponse(req: Request, res: Response, next?: NextFunction): any;
   viewRequests(req: Request, res: Response, next?: NextFunction): any;
   viewAllRequests(req: Request, res: Response, next?: NextFunction): any;
+ findUser(req: Request, res: Response, next?: NextFunction): any;
 }

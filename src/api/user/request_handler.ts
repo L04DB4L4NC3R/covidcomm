@@ -66,5 +66,12 @@ import {
 					return res.status(200).json(user);
 				}).catch(next);
 		}			
+    public findUser(req: Request, res: Response, next?: NextFunction) {
+				let {respondee_id} = req.body;
+			userSvc.FindUser(respondee_id)
+				.then((user: any) => {
+					return res.status(200).json(user);
+				}).catch(next);
+		}			
   };
   

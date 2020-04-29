@@ -13,6 +13,7 @@ interface Service {
 	Subscription(id: string, set: boolean): any;
 	ViewRequests(id: string): any;
 	ViewAllRequests(id: string): any;
+	FindUser(id: string): any;
 }
 
 
@@ -90,4 +91,7 @@ export class service implements Service {
 				}).catch(reject);
 		})
 	}
+		FindUser(id: string): any {
+			return this.repo.FindByID(id);
+		}
 }
