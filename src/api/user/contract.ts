@@ -10,6 +10,7 @@ export interface IUserAuthHandler {
   checkAuthentication(req: Request, res: Response, next?: NextFunction): any;
 	subscribe(req: Request, res: Response, next?: NextFunction): any;
 	unsubscribe(req: Request, res: Response, next?: NextFunction): any;
+	verifyOTP(req: Request, res: Response, next?: NextFunction): any;
 };
 
 export interface IUserReqHandler {

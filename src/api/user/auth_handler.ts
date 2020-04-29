@@ -28,7 +28,8 @@ export class UserAuthHandler implements IUserAuthHandler {
       let jwt = generateJWT(user._id);
       return res.status(201).json({
         _id: user._id,
-        token: jwt
+					token: jwt,
+					phoneNumber: user.phoneNumber
       })
     }).catch(next)
   }
@@ -45,7 +46,8 @@ export class UserAuthHandler implements IUserAuthHandler {
       let jwt = generateJWT(user._id);
       return res.status(200).json({
         _id: user._id,
-        token: jwt
+					token: jwt,
+					phoneNumber: user.phoneNumber
       })
     }).catch(err => {
       if (next)
@@ -74,4 +76,21 @@ export class UserAuthHandler implements IUserAuthHandler {
 			res.status(200).json(req.params.jwtPayload)
 		}).catch(next)
 	}
+		public verifyOTP(req: Request, res: Response, next?: NextFunction) {
+				userSvc.FindUser(req.params.jwtPayload)
+						.then((user: any) => {
+
+			const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+			client.verify.services(process.env.TWILIO_SERVICE_SID)
+      .verificationChecks
+      .create({to: user.phoneNumber, code: req.body.code})
+			.then((verification: any) => {
+					if (verification.status == "approved") {
+							return res.status(200).json({status: "approved"})
+					} else {
+							return res.status(401).json({status: "rejected"})
+					}
+			}).catch(next)
+						}).catch(next)
+		}
 };
