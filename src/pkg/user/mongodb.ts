@@ -156,6 +156,6 @@ export class MongoRepo implements Repository {
 		})
 	}
 	FindAllRequestsWithoutID(id: string) {
-			return UserModel.find({_id: {$ne: id}, "requests.$.fulfilled": false}, {_id: 0, requests: 1})
+			return UserModel.find({_id: {$ne: id}, "requests.fulfilled": false}, {_id: 0, requests: 1})
 	}
 }
